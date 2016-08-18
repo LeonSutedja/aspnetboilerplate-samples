@@ -15,5 +15,8 @@
     <text name="CreateTheTask" value="Görevi oluştur" />
     <text name="TaskUpdatedMessage" value="Görev başarıyla güncellendi." />
     <text name="TaskCreatedMessage" value="{0} görevi başarıyla oluşturuldu." />
+    <text name="TaskDeletedMessage" value="Task has been deleted successfully." />
+    <text name="DeleteTask" value="Delete" />
+    <text name="TaskCriticality" value="Task Criticality" />
   </texts>
 </localizationDictionary>

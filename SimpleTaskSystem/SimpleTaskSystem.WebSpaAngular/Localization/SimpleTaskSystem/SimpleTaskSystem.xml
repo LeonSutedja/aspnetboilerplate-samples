@@ -15,5 +15,8 @@
     <text name="CreateTheTask" value="Create the task" />
     <text name="TaskUpdatedMessage" value="Task has been successfully updated." />
     <text name="TaskCreatedMessage" value="Task {0} has been created successfully." />
+    <text name="TaskDeletedMessage" value="Task has been deleted successfully." />
+    <text name="DeleteTask" value="Delete Task" />
+    <text name="TaskCriticality" value="Task Criticality" />
   </texts>
 </localizationDictionary>

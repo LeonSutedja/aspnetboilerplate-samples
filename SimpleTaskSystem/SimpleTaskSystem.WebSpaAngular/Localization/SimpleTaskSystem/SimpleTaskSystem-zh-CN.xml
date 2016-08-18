@@ -15,5 +15,8 @@
     <text name="CreateTheTask" value="任务创建中" />
     <text name="TaskUpdatedMessage" value="任务已修改成功." />
     <text name="TaskCreatedMessage" value="任务{0}已创建成功." />
+    <text name="TaskDeletedMessage" value="Task has been deleted successfully." />
+    <text name="DeleteTask" value="Delete" />
+    <text name="TaskCriticality" value="Task Criticality" />
   </texts>
 </localizationDictionary>
