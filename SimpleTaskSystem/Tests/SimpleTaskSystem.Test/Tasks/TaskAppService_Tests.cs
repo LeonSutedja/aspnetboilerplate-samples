@@ -120,7 +120,7 @@ namespace SimpleTaskSystem.Test.Tasks
         }
 
         [Fact]
-        public void Should_Delete_Task()
+        public void Should_Delete_Completed_Task()
         {
             //We can work with repositories instead of DbContext
             var taskRepository = LocalIocManager.Resolve<ITaskRepository>();
@@ -140,6 +140,48 @@ namespace SimpleTaskSystem.Test.Tasks
 
             //Check result
             taskRepository.Get(taskId).State.ShouldBe(TaskState.Deleted);
+        }
+
+        [Fact]
+        public void Should_Switch_Task_State_From_Completed_To_Active()
+        {
+            //We can work with repositories instead of DbContext
+            var taskRepository = LocalIocManager.Resolve<ITaskRepository>();
+
+            //Obtain test data
+            var targetTask = taskRepository.FirstOrDefault(t => t.State == TaskState.Completed);
+            targetTask.ShouldNotBe(null);
+
+            //Run SUT
+            _taskAppService.SwitchTaskState(
+                new SwitchTaskStateInput
+                {
+                    TaskId = targetTask.Id
+                });
+
+            //Check result
+            taskRepository.Get(targetTask.Id).State.ShouldBe(TaskState.Active);
+        }
+
+        [Fact]
+        public void Should_Switch_Task_State_From_Active_To_Completed()
+        {
+            //We can work with repositories instead of DbContext
+            var taskRepository = LocalIocManager.Resolve<ITaskRepository>();
+
+            //Obtain test data
+            var targetTask = taskRepository.FirstOrDefault(t => t.State == TaskState.Active);
+            targetTask.ShouldNotBe(null);
+
+            //Run SUT
+            _taskAppService.SwitchTaskState(
+                new SwitchTaskStateInput
+                {
+                    TaskId = targetTask.Id
+                });
+
+            //Check result
+            taskRepository.Get(targetTask.Id).State.ShouldBe(TaskState.Completed);
         }
 
         private Person GetPerson(string name)
