@@ -26,6 +26,9 @@ namespace SimpleTaskSystem.EntityFramework.Repositories
 
             //Add some Where conditions...
 
+            // Only active tasks
+            query = query.Where(task => task.State != TaskState.Deleted);
+
             if (assignedPersonId.HasValue)
             {
                 query = query.Where(task => task.AssignedPerson.Id == assignedPersonId.Value);

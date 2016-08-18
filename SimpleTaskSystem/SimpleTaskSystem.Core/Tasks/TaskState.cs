@@ -13,6 +13,11 @@
         /// <summary>
         /// The task is completed.
         /// </summary>
-        Completed = 2
+        Completed = 2,
+
+        /// <summary>
+        /// The task is deleted.
+        /// </summary>
+        Deleted = 3
     }
 }

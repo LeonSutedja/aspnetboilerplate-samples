@@ -83,5 +83,22 @@ namespace SimpleTaskSystem.Tasks
             //Saving entity with standard Insert method of repositories.
             _taskRepository.Insert(task);
         }
+
+        public void DeleteTask(DeleteTaskInput input)
+        {
+            //We can use Logger, it's defined in ApplicationService class.
+            Logger.Info("Deleting Task with id: " + input.TaskId);
+
+            var task = _taskRepository.Get(input.TaskId);
+
+            task.State = TaskState.Deleted;
+
+            //We even do not call Update method of the repository.
+            //Because an application service method is a 'unit of work' scope as default.
+            //ABP automatically saves all changes when a 'unit of work' scope ends (without any exception).
+
+            //Saving entity with standard Delete method of repositories.
+            _taskRepository.Update(task);
+        }
     }
 }

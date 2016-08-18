@@ -92,6 +92,29 @@ namespace SimpleTaskSystem.Test.Tasks
             taskRepository.Get(targetTask.Id).AssignedPersonId.ShouldBe(thomasMore.Id);
         }
 
+        [Fact]
+        public void Should_Delete_Task()
+        {
+            //We can work with repositories instead of DbContext
+            var taskRepository = LocalIocManager.Resolve<ITaskRepository>();
+
+            //Obtain test data
+            var targetTask = taskRepository.FirstOrDefault(t => t.Id == 1);
+            targetTask.ShouldNotBe(null);
+
+            var taskId = targetTask.Id;
+            
+            //Run SUT
+            _taskAppService.DeleteTask(
+                new DeleteTaskInput
+                {
+                    TaskId = taskId
+                });
+
+            //Check result
+            taskRepository.Get(taskId).State.ShouldBe(TaskState.Deleted);
+        }
+
         private Person GetPerson(string name)
         {
             return UsingDbContext(context => context.People.Single(p => p.Name == name));
