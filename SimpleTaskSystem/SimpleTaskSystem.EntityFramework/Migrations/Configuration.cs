@@ -23,6 +23,12 @@ namespace SimpleTaskSystem.Migrations
                 new Person {Name = "George Orwell"},
                 new Person {Name = "Douglas Adams"}
                 );
+
+            context.TaskCriticalities.AddOrUpdate(
+                p => p.Id,
+                new Tasks.TaskCriticality { Id = 1, Value = "Normal" },
+                new Tasks.TaskCriticality { Id = 2, Value = "Medium" },
+                new Tasks.TaskCriticality { Id = 3, Value = "High" });
         }
     }
 }
