@@ -227,6 +227,7 @@
     <Content Include="App\Main\views\layout\header.js" />
     <Content Include="App\Main\views\layout\layout.js" />
     <Content Include="App\Main\views\task\list.js" />
+    <Content Include="App\Main\views\task\listControllerTests.js" />
     <Content Include="App\Main\views\task\new.js" />
     <Content Include="Content\bootstrap-cosmo.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -1099,6 +1100,7 @@
     <Content Include="Scripts\i18n\angular-locale_zu-za.js" />
     <Content Include="Scripts\i18n\angular-locale_zu.js" />
     <None Include="Scripts\jquery-2.1.4-vsdoc.js" />
+    <Content Include="Scripts\jasmine.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.js" />
@@ -1161,6 +1163,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Scripts\jasmineTests\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SimpleTaskSystem.Core\SimpleTaskSystem.Core.csproj">

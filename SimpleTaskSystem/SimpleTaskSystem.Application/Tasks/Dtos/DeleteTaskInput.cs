@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using SimpleTaskSystem.InputHandler;
 
 namespace SimpleTaskSystem.Tasks.Dtos
 {
