@@ -48,6 +48,15 @@ namespace SimpleTaskSystem.Test.InitialData
                 });
 
             context.SaveChanges();
+
+            context.TaskCriticalities.AddOrUpdate(
+               tc => tc.Id,
+               new TaskCriticality { Id = 1, Value = "Normal" },
+               new TaskCriticality { Id = 2, Value = "Medium" },
+               new TaskCriticality { Id = 3, Value = "High" }
+               );
+
+            context.SaveChanges();
         }
     }
 }

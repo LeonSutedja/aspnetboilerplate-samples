@@ -5,6 +5,7 @@ using SimpleTaskSystem.People;
 using SimpleTaskSystem.Tasks;
 using SimpleTaskSystem.Tasks.Dtos;
 using Xunit;
+using System.Collections.Generic;
 
 namespace SimpleTaskSystem.Test.Tasks
 {
@@ -57,6 +58,32 @@ namespace SimpleTaskSystem.Test.Tasks
                 var task2 = context.Tasks.FirstOrDefault(t => t.Description == "my test task 2");
                 task2.ShouldNotBe(null);
                 task2.AssignedPersonId.ShouldBe(thomasMore.Id);
+            });
+        }
+
+        [Fact]
+        public void Should_Create_New_Tasks_With_Criticality()
+        {
+            //Prepare for test
+            var initialTaskCount = UsingDbContext(context => context.Tasks.Count());
+            var tasksCriticalityId = GetTaskCriticalities().First().Id;
+            var taskCriticalityDescription = "My test task criticality description";
+
+            //Run SUT            
+            _taskAppService.CreateTask(
+                new CreateTaskInput
+                {
+                    Description = taskCriticalityDescription,
+                    TaskCriticalityId = tasksCriticalityId
+                });
+
+            //Check results
+            UsingDbContext(context =>
+            {
+                context.Tasks.Count().ShouldBe(initialTaskCount + 1);                
+                var taskCriticality = context.Tasks.FirstOrDefault(t => t.Description == taskCriticalityDescription);
+                taskCriticality.ShouldNotBe(null);
+                taskCriticality.TaskCriticalityId.ShouldBe(tasksCriticalityId);
             });
         }
 
@@ -118,6 +145,11 @@ namespace SimpleTaskSystem.Test.Tasks
         private Person GetPerson(string name)
         {
             return UsingDbContext(context => context.People.Single(p => p.Name == name));
+        }
+
+        private List<TaskCriticality> GetTaskCriticalities()
+        {
+            return UsingDbContext(context => context.TaskCriticalities.ToList());
         }
     }
 }
