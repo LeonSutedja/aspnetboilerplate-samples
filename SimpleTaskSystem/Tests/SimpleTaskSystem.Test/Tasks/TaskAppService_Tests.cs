@@ -126,7 +126,7 @@ namespace SimpleTaskSystem.Test.Tasks
             var taskRepository = LocalIocManager.Resolve<ITaskRepository>();
 
             //Obtain test data
-            var targetTask = taskRepository.FirstOrDefault(t => t.Id == 1);
+            var targetTask = taskRepository.FirstOrDefault(t => t.State == TaskState.Completed);
             targetTask.ShouldNotBe(null);
 
             var taskId = targetTask.Id;
