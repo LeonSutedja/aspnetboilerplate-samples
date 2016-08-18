@@ -114,6 +114,10 @@
     <Compile Include="Migrations\201406291022389_InitialCreate.Designer.cs">
       <DependentUpon>201406291022389_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608171119550_AddTaskCriticalities.cs" />
+    <Compile Include="Migrations\201608171119550_AddTaskCriticalities.Designer.cs">
+      <DependentUpon>201608171119550_AddTaskCriticalities.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SimpleTaskSystemDataModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -132,6 +136,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201406291022389_InitialCreate.resx">
       <DependentUpon>201406291022389_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608171119550_AddTaskCriticalities.resx">
+      <DependentUpon>201608171119550_AddTaskCriticalities.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
