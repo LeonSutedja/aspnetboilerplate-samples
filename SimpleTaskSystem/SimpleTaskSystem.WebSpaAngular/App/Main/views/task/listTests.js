@@ -103,6 +103,6 @@ describe('sts.views.task.list', function () {
         var task = { id: 1, taskDescription: "test description" };
         vm.changeTaskState(task);
 
-        expect(taskServiceMock.updateTask).toHaveBeenCalled();;
+        expect(taskServiceMock.updateTask).toHaveBeenCalled();
     });
 });
