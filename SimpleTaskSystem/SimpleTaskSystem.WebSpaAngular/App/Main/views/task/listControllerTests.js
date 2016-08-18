@@ -15,8 +15,15 @@
 
 describe('sts.views.task.list', function () {
     var scope, controller;
-    var taskServiceMock = {};
-    
+    var taskServiceMock = {
+        getTasks: function (inputValue) { },
+        deleteTask: function (task) { },
+        updateTask: function (task) { }
+    };
+    var mockAbpUi = {
+        setBusy: function (arg1, arg2) { }
+    };
+
     var mockAbpUtils = {
         formatString: function (input1, input2) { return "stringsFormatted"; }
     };
@@ -27,7 +34,8 @@ describe('sts.views.task.list', function () {
 
     var mockAbp = {
         localization: mockAbpLocalization,
-        utils: mockAbpUtils
+        utils: mockAbpUtils,
+        ui: mockAbpUi
     };
 
     // Set up the module
@@ -48,6 +56,53 @@ describe('sts.views.task.list', function () {
                 $scope: scope,
                 "abp.services.tasksystem.task": taskServiceMock                
             });
-        expect(vm.getTaskCountText()).not.toBe(null)
+        expect(vm.getTaskCountText()).not.toBe(null);
+    });
+
+    it("refreshTasks uses taskService.getTasks", function () {
+        var vm = controller("sts.views.task.list as vm",
+            {
+                $scope: scope,
+                "abp.services.tasksystem.task": taskServiceMock
+            });
+        spyOn(taskServiceMock, "getTasks").and.returnValue({
+            success: function (c) { }
+        });
+
+        vm.refreshTasks();
+
+        expect(taskServiceMock.getTasks).toHaveBeenCalled();;
+    });
+
+    it("deleteTask call taskService.deleteTask", function () {
+        var vm = controller("sts.views.task.list as vm",
+            {
+                $scope: scope,
+                "abp.services.tasksystem.task": taskServiceMock
+            });
+        spyOn(taskServiceMock, "deleteTask").and.returnValue({
+            success: function (c) { }
+        });
+
+        var task = { id: 1, taskDescription: "test description" };
+        vm.deleteTask(task);
+
+        expect(taskServiceMock.deleteTask).toHaveBeenCalled();;
+    });
+    
+    it("changeTaskState call taskService.updateTask", function () {
+        var vm = controller("sts.views.task.list as vm",
+            {
+                $scope: scope,
+                "abp.services.tasksystem.task": taskServiceMock
+            });
+        spyOn(taskServiceMock, "updateTask").and.returnValue({
+            success: function (c) { }
+        });
+
+        var task = { id: 1, taskDescription: "test description" };
+        vm.changeTaskState(task);
+
+        expect(taskServiceMock.updateTask).toHaveBeenCalled();;
     });
 });
