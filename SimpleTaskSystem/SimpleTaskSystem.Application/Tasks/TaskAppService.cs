@@ -1,4 +1,3 @@
-﻿using System.Collections.Generic;
 ﻿using System;
 using System.Collections.Generic;
 using Abp.Application.Services;
@@ -97,17 +96,14 @@ namespace SimpleTaskSystem.Tasks
         {
             //We can use Logger, it's defined in ApplicationService class.
             Logger.Info("Deleting Task with id: " + input.TaskId);
-
             var task = _taskRepository.Get(input.TaskId);
+
+            if (task.State != TaskState.Completed) throw new Exception("Cannot delete incomplete task.");
 
             task.State = TaskState.Deleted;
 
-            //We even do not call Update method of the repository.
-            //Because an application service method is a 'unit of work' scope as default.
-            //ABP automatically saves all changes when a 'unit of work' scope ends (without any exception).
-
-            //Saving entity with standard Delete method of repositories.
-            _taskRepository.Update(task);
-        }
+            //Saving entity with standard Update method of repositories.
+            _taskRepository.Update(task);            
+        }         
     }
 }
