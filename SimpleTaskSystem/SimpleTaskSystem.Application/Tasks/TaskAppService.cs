@@ -94,7 +94,6 @@ namespace SimpleTaskSystem.Tasks
 
         public void DeleteTask(DeleteTaskInput input)
         {
-            //We can use Logger, it's defined in ApplicationService class.
             Logger.Info("Deleting Task with id: " + input.TaskId);
             var task = _taskRepository.Get(input.TaskId);
 

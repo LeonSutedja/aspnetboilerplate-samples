@@ -9,12 +9,12 @@ namespace SimpleTaskSystem.Tasks
     public class TaskCriticality : Entity
     {
         /// <summary>
-        /// Describe the criticality of the task.
+        /// Describe the criticality of the task. This is for the Telstra test requirement.
         /// </summary>
         public virtual string Value { get; set; }
 
         /// <summary>
-        /// Default costructor.
+        /// Default empty constructor.
         /// </summary>
         public TaskCriticality()
         {

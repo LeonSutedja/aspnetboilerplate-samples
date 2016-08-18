@@ -37,6 +37,7 @@ namespace SimpleTaskSystem.Tasks
         public virtual TaskCriticality TaskCriticality { get; set; }
 
         /// <summary>
+        /// Database field for the task criticality reference.
         /// </summary>
         public virtual int? TaskCriticalityId { get; set; }
 
