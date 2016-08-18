@@ -6,11 +6,11 @@
 ///<reference path="../../../../Scripts/angular-ui-router.js"/>
 ///<reference path="../../../../Scripts/angular-ui/ui-bootstrap.js"/>
 ///<reference path="../../../../Scripts/angular-ui/ui-utils.js"/>
-
+///<reference path="../../../../Scripts/jquery-2.1.4.js"/>
 ///<reference path="../../../../Abp/Framework/scripts/abp.js"/>
 ///<reference path="../../../../Abp/Framework/scripts/libs/angularjs/abp.ng.js"/>
-
 ///<reference path="../../app.js"/>
+
 ///<reference path="list.js"/>
 
 describe('sts.views.task.list', function () {
