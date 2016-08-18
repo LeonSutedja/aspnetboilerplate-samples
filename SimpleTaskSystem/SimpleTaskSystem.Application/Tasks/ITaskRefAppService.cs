@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Services;
 using SimpleTaskSystem.Tasks.Dtos;
+using System.Threading.Tasks;
 
 namespace SimpleTaskSystem.Tasks
 {
@@ -12,14 +13,8 @@ namespace SimpleTaskSystem.Tasks
     /// Application services works with DTOs (Data Transfer Objects).
     /// Service methods gets and returns DTOs.
     /// </summary>
-    public interface ITaskAppService : IApplicationService
+    public interface ITaskReferenceAppService : IApplicationService
     {
-        GetTasksOutput GetTasks(GetTasksInput input);
-
-        void UpdateTask(UpdateTaskInput input);
-        
-        void CreateTask(CreateTaskInput input);
-
-        void DeleteTask(DeleteTaskInput input);
+        Task<GetTasksCriticalitiesOutput> GetTaskCriticalities();
     }
 }

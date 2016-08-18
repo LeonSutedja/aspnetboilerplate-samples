@@ -19,15 +19,17 @@ namespace SimpleTaskSystem.Tasks
         
         private readonly ITaskRepository _taskRepository;
         private readonly IRepository<Person> _personRepository;
-        
+        private readonly IRepository<TaskCriticality> _taskCriticalityRepository;
+
         /// <summary>
         ///In constructor, we can get needed classes/interfaces.
         ///They are sent here by dependency injection system automatically.
         /// </summary>
-        public TaskAppService(ITaskRepository taskRepository, IRepository<Person> personRepository)
+        public TaskAppService(ITaskRepository taskRepository, IRepository<Person> personRepository, IRepository<TaskCriticality> taskCriticalityRepository)
         {
             _taskRepository = taskRepository;
             _personRepository = personRepository;
+            _taskCriticalityRepository = taskCriticalityRepository;
         }
         
         public GetTasksOutput GetTasks(GetTasksInput input)
@@ -78,6 +80,11 @@ namespace SimpleTaskSystem.Tasks
             if (input.AssignedPersonId.HasValue)
             {
                 task.AssignedPerson = _personRepository.Load(input.AssignedPersonId.Value);
+            }
+
+            if (input.TaskCriticalityId.HasValue)
+            {
+                task.TaskCriticality = _taskCriticalityRepository.Load(input.TaskCriticalityId.Value);
             }
 
             //Saving entity with standard Insert method of repositories.

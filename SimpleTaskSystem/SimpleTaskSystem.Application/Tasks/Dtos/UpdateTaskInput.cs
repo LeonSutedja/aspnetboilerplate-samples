@@ -16,6 +16,8 @@ namespace SimpleTaskSystem.Tasks.Dtos
 
         public int? AssignedPersonId { get; set; }
 
+        public int? TaskCriticalityId { get; set; }
+
         public TaskState? State { get; set; }
 
         //Custom validation method. It's called by ABP after data annotation validations.

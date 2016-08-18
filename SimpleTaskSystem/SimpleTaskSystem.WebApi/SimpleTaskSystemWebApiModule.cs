@@ -3,6 +3,7 @@ using Abp.Application.Services;
 using Abp.Modules;
 using Abp.WebApi;
 using Abp.WebApi.Controllers.Dynamic.Builders;
+using SimpleTaskSystem.Tasks;
 
 namespace SimpleTaskSystem
 {
@@ -23,6 +24,8 @@ namespace SimpleTaskSystem
             DynamicApiControllerBuilder
                 .ForAll<IApplicationService>(Assembly.GetAssembly(typeof (SimpleTaskSystemApplicationModule)), "tasksystem")
                 .Build();
+
+            DynamicApiControllerBuilder.For<ITaskReferenceAppService>("tasksystem/taskreference").Build();
         }
     }
 }

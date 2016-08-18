@@ -10,6 +10,8 @@ namespace SimpleTaskSystem.EntityFramework
     {
         public virtual IDbSet<Task> Tasks { get; set; }
 
+        public virtual IDbSet<TaskCriticality> TaskCriticalities { get; set; }
+
         public virtual IDbSet<Person> People { get; set; }
 
         public SimpleTaskSystemDbContext()

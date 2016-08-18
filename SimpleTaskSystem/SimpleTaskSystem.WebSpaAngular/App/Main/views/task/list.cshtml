@@ -31,6 +31,7 @@
                         <span class="task-assignedto">{{task.assignedPersonName}}</span>
                     </span>
                     <span class="task-creationtime">{{task.creationTime | momentFromNow}}</span>
+                    <span class="label" ng-class="{'label-primary' : task.taskCriticalityId == 1, 'label-warning': task.taskCriticalityId == 2, 'label-danger': task.taskCriticalityId == 3}">{{task.taskCriticalityValue}}</span>
                 </div>
                 <div class="col-xs-4">
                     <button ng-click="vm.deleteTask(task)" ng-show="task.state == 2" type="submit" class="btn btn-xs btn-danger pull-right">@L("DeleteTask")</button>

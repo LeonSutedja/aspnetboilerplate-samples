@@ -16,6 +16,10 @@ namespace SimpleTaskSystem.Tasks.Dtos
 
         public DateTime CreationTime { get; set; }
 
+        public int? TaskCriticalityId { get; set; }
+
+        public string TaskCriticalityValue { get; set; }
+
         public byte State { get; set; }
 
         //This method is just used by the Console Application to list tasks

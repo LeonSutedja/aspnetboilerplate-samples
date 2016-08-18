@@ -3,12 +3,13 @@
 
     var controllerId = 'sts.views.task.new';
     app.controller(controllerId, [
-        '$scope', '$location', 'abp.services.tasksystem.task', 'abp.services.tasksystem.person',
-        function($scope, $location, taskService, personService) {
-            var vm = this;
-
+        '$scope', '$location', 'abp.services.tasksystem.task', 'abp.services.tasksystem.person', 'abp.services.tasksystem.taskreference',
+        function($scope, $location, taskService, personService, taskReferenceService) {
+            var vm = this;          
+            
             vm.task = {
                 description: '',
+                taskCriticalityId: null,
                 assignedPersonId: null
             };
 
@@ -18,6 +19,11 @@
 
             personService.getAllPeople().success(function(data) {
                 vm.people = data.people;
+            });
+
+            vm.taskCriticalities = [];
+            taskReferenceService.getTaskCriticalities().success(function (data) {
+                vm.taskCriticalities = data.taskCriticalities;
             });
 
             vm.saveTask = function() {
