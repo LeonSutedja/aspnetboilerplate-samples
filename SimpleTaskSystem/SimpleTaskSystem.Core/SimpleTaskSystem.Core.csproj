@@ -94,6 +94,7 @@
     <Compile Include="SimpleTaskSystemCoreModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tasks\ITaskRepository.cs" />
+    <Compile Include="Tasks\TaskCriticality.cs" />
     <Compile Include="Tasks\Task.cs" />
     <Compile Include="Tasks\TaskState.cs" />
   </ItemGroup>

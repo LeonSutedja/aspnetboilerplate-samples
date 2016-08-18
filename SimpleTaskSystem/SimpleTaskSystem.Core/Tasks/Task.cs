@@ -32,6 +32,13 @@ namespace SimpleTaskSystem.Tasks
         /// Needed for EntityFramework, no need for NHibernate.
         /// </summary>
         public virtual int? AssignedPersonId { get; set; }
+            
+        [ForeignKey("TaskCriticalityId")]
+        public virtual TaskCriticality TaskCriticality { get; set; }
+
+        /// <summary>
+        /// </summary>
+        public virtual int? TaskCriticalityId { get; set; }
 
         /// <summary>
         /// Describes the task.
