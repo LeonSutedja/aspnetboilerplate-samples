@@ -39,18 +39,10 @@
             };
 
             vm.changeTaskState = function(task) {
-                var newState;
-                if (task.state == 1) {
-                    newState = 2; //Completed
-                } else {
-                    newState = 1; //Active
-                }
-
-                taskService.updateTask({
-                    taskId: task.id,
-                    state: newState
-                }).success(function() {
-                    task.state = newState;
+                taskService.switchTaskState({
+                    taskId: task.id
+                }).success(function () {
+                    vm.refreshTasks();
                     abp.notify.info(vm.localize('TaskUpdatedMessage'));
                 });
             };

@@ -18,7 +18,8 @@ describe('sts.views.task.list', function () {
     var taskServiceMock = {
         getTasks: function (inputValue) { },
         deleteTask: function (task) { },
-        updateTask: function (task) { }
+        updateTask: function (task) { },
+        switchTaskState: function (task) { }
     };
     var mockAbpUi = {
         setBusy: function (arg1, arg2) { }
@@ -90,19 +91,19 @@ describe('sts.views.task.list', function () {
         expect(taskServiceMock.deleteTask).toHaveBeenCalled();;
     });
     
-    it("changeTaskState call taskService.updateTask", function () {
+    it("changeTaskState call taskService.switchTaskState", function () {
         var vm = controller("sts.views.task.list as vm",
             {
                 $scope: scope,
                 "abp.services.tasksystem.task": taskServiceMock
             });
-        spyOn(taskServiceMock, "updateTask").and.returnValue({
+        spyOn(taskServiceMock, "switchTaskState").and.returnValue({
             success: function (c) { }
         });
 
         var task = { id: 1, taskDescription: "test description" };
         vm.changeTaskState(task);
 
-        expect(taskServiceMock.updateTask).toHaveBeenCalled();
+        expect(taskServiceMock.switchTaskState).toHaveBeenCalled();
     });
 });

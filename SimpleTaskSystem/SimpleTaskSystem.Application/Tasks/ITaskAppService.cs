@@ -15,11 +15,19 @@ namespace SimpleTaskSystem.Tasks
     public interface ITaskAppService : IApplicationService
     {
         GetTasksOutput GetTasks(GetTasksInput input);
-
-        void UpdateTask(UpdateTaskInput input);
         
+        void UpdateTask(UpdateTaskInput input);
+
         void CreateTask(CreateTaskInput input);
 
         void DeleteTask(DeleteTaskInput input);
+
+        /// <summary>
+        /// Switch task state switches a task from active to completed, or vice versa.
+        /// Only non deleted task can be updated.
+        /// </summary>
+        /// <param name="input"></param>
+        void SwitchTaskState(SwitchTaskStateInput input);
+
     }
 }

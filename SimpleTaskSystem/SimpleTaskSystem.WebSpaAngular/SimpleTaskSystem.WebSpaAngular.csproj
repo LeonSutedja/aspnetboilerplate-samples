@@ -227,6 +227,7 @@
     <Content Include="App\Main\views\layout\header.js" />
     <Content Include="App\Main\views\layout\layout.js" />
     <Content Include="App\Main\views\task\list.js" />
+    <Content Include="App\Main\views\task\newTests.js" />
     <Content Include="App\Main\views\task\listTests.js" />
     <Content Include="App\Main\views\task\new.js" />
     <Content Include="Content\bootstrap-cosmo.min.css" />
