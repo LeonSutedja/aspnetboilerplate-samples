@@ -28,6 +28,16 @@
                 );
             };
 
+            vm.deleteTask = function (task) {
+                var taskDescription = task.taskDescription;
+                taskService.deleteTask({
+                    TaskId: task.id
+                }).success(function () {
+                    vm.refreshTasks();
+                    abp.notify.info(vm.localize('TaskDeletedMessage'), taskDescription);
+                });
+            };
+
             vm.changeTaskState = function(task) {
                 var newState;
                 if (task.state == 1) {
