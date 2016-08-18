@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using Abp.Runtime.Validation;
+﻿using System.ComponentModel.DataAnnotations;
+using SimpleTaskSystem.InputHandler;
 
 namespace SimpleTaskSystem.Tasks.Dtos
 {
@@ -10,5 +9,5 @@ namespace SimpleTaskSystem.Tasks.Dtos
     {
         [Range(1, long.MaxValue)] //Data annotation attributes work as expected.
         public long TaskId { get; set; }
-    }
+    }    
 }
