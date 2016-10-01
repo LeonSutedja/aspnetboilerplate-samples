@@ -14,7 +14,7 @@ namespace SimpleTaskSystem.Tasks
     /// </summary>
     public interface ITaskAppService : IApplicationService
     {
-        GetTasksOutput GetTasks(GetTasksInput input);
+        GetTasksOutput GetTasks(GetTasksQuery input);
         
         void UpdateTask(UpdateTaskInput input);
 

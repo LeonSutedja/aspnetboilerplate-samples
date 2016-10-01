@@ -1163,8 +1163,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
-    <Folder Include="Scripts\jasmineTests\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SimpleTaskSystem.Core\SimpleTaskSystem.Core.csproj">

@@ -6,6 +6,7 @@ using SimpleTaskSystem.Tasks;
 using SimpleTaskSystem.Tasks.Dtos;
 using Xunit;
 using System.Collections.Generic;
+using System;
 
 namespace SimpleTaskSystem.Test.Tasks
 {
@@ -23,7 +24,7 @@ namespace SimpleTaskSystem.Test.Tasks
         public void Should_Get_Tasks()
         {
             //Run SUT
-            var output = _taskAppService.GetTasks(new GetTasksInput { State = TaskState.Completed });
+            var output = _taskAppService.GetTasks(new GetTasksQuery { State = TaskState.Completed });
 
             //Checking results
             output.Tasks.Count.ShouldBe(2);
@@ -140,6 +141,29 @@ namespace SimpleTaskSystem.Test.Tasks
 
             //Check result
             taskRepository.Get(taskId).State.ShouldBe(TaskState.Deleted);
+        }
+        
+        [Fact]
+        public void Should_Throw_Exception_On_Incomplete_Task_Delete()
+        {
+            //We can work with repositories instead of DbContext
+            var taskRepository = LocalIocManager.Resolve<ITaskRepository>();
+
+            //Obtain test data
+            var targetTask = taskRepository.FirstOrDefault(t => t.State == TaskState.Active);
+            targetTask.ShouldNotBe(null);
+
+            var taskId = targetTask.Id;
+
+            //Run SUT
+            Should.Throw<Exception>(() =>
+            {
+                _taskAppService.DeleteTask(
+                        new DeleteTaskInput
+                        {
+                            TaskId = taskId
+                        });
+            });
         }
 
         [Fact]
